@@ -1,0 +1,49 @@
+@import  '../../../../styles/theme/variables.less';
+
+.dialog{
+    width: 330px;
+    background: aliceblue;
+    border-radius: 6px;
+    padding: 30px; 
+    &-header{
+        font-weight: 500;
+        padding: 0 10px;
+    }
+    &-text{
+        padding: 10px;
+        color: @grayish-blue;
+    }
+}
+.box-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0 0 0 / 30%);
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+
+.btn{
+    width: 150px;
+    height: 50px;
+    border-radius: 6px;
+    font-weight: 500;
+    border: none;
+    color: white;
+    cursor: pointer;
+    &-cancel{
+        background-color: @grayish-blue; 
+    }
+    &-delete{
+        background-color: @soft-red;
+    }
+}
+.btn-group{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
