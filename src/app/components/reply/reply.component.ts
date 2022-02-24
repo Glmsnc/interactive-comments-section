@@ -21,16 +21,22 @@ export class ReplyComponent implements OnInit {
 
   send(){
     let replyingTo = '' 
-    this.textContent = this.textContent.split('@')[1];
-    if(this.textContent.includes(',')){
-      replyingTo = this.textContent.split(',')[0];
-      this.textContent = this.textContent.split(',')[1];
+    if(this.replyTo){
+      this.textContent = this.textContent.split('@')[1];
+      if(this.textContent?.includes(',')){
+        replyingTo = this.textContent.split(',')[0];
+        this.textContent = this.textContent.split(',')[1];
+      }
+      else{
+        replyingTo = this.textContent.split(' ')[0];
+        this.textContent = this.textContent.split(' ')[1];
+      }
+    this.sendMessage.emit({replyingTo, content:this.textContent});
     }
     else{
-      replyingTo = this.textContent.split(' ')[0];
-      this.textContent = this.textContent.split(' ')[1];
+      this.sendMessage.emit(this.textContent);
     }
-    this.sendMessage.emit({replyingTo, content:this.textContent});
+    this.textContent = '';
 
   }
 

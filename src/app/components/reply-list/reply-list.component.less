@@ -8,12 +8,17 @@
     gap: 20px;
     padding-left: 35px;
     margin-top: 20px;
+    margin-left: 15px;
+
 
 }
 .reply-list{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 15px;    
+    ::ng-deep .comment-container{
+        width: calc(80% - 10px);
+    }
 }
 
 @media screen and (max-width: @phone-screen){

@@ -27,13 +27,37 @@ export class AppComponent implements OnInit{
       console.log('teste', this.comments)
     });
   }
+  addReply($event){
+    const reply: CommentData = {
+      id: this.getLastId(),
+      content: $event,
+      createdAt: 'Today',
+      score: 0,
+      replyingTo: '' ,
+      user: this.userService.user,
+      replies: []
+    }
+    this.comments.push(reply);
 
+  }
   loadData(){
     const {comments, currentUser} = data;
     this.currentUser = currentUser;
     this.saveUser();
     this.saveComments(comments);
 
+  }
+
+
+  getLastId(): number{
+    let lastId = 0;
+    console.log(this.commentService.comment)
+    this.commentService.comment.map(comment =>{
+      if(comment.id > lastId) lastId = comment.id;
+      comment.replies.map(reply =>{ if(reply.id > lastId) lastId = reply.id});
+      return comment;
+    })
+    return lastId+1;
   }
 
   saveUser(){

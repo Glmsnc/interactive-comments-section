@@ -8,6 +8,7 @@
 
     <app-reply 
       [isNewMessage]="true"
+      (sendMessage)="addReply($event)"
     > </app-reply>
   </div>
 </div>

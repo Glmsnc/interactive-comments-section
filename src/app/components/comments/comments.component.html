@@ -25,9 +25,14 @@
           
         </div>
         <div class="comment-info-content">
-            <span *ngIf="!editComment">
-                <span class="replyingTo" *ngIf="comment?.replyingTo">@{{comment.replyingTo}} </span>{{comment.content}}</span>
+            <p *ngIf="!editComment">
+                <span class="replyingTo" *ngIf="comment?.replyingTo">@{{comment.replyingTo}} </span>
+                {{comment.content}}
+            </p>
+            <div class="edit-area">
             <textarea *ngIf="editComment" [(ngModel)]="comment.content"></textarea>
+            <button *ngIf="editComment" (click)="toggleEdit()" class="primary-button" >UPDATE</button>
+            </div>
         </div>
     </div>
 </div>
@@ -40,8 +45,8 @@
         <reply-button (click)="toggleReply()"></reply-button>
     </div>
     <div *ngIf="isCurrentUser" class="same-user-painel">
-        <span class="delete" (click)="toggleModal()"> <img src="../../../assets/images/icon-delete.svg">  Delete</span>
-        <span class="edit" (click)=" toggleEdit()"> <img src="../../../assets/images/icon-edit.svg"> Edit</span>
+        <span class="outline-button delete" (click)="toggleModal()"> <img src="../../../assets/images/icon-delete.svg">  Delete</span>
+        <span class="outline-button edit" (click)="toggleEdit()"> <img src="../../../assets/images/icon-edit.svg"> Edit</span>
     </div>
 </ng-template>
 <app-reply 

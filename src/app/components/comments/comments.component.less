@@ -9,7 +9,9 @@ textarea{
     width: 100%;
     border: 2px solid @light-gray;
     min-width: 180px;
-
+    color: hsl(211, 10%, 45%);
+    font-weight: 400;
+    line-height: 1.5;
     &::placeholder{
         color: @dark-blue;
     }
@@ -94,9 +96,17 @@ textarea{
     }
 }
 
+.edit-area{
+    text-align: end;
+}
+
 .replyingTo{
+    cursor: pointer;
     color: @moderate-blue;
     font-weight: 500;
+    &:hover{
+        opacity: 0.5;
+    }
 }
 .same-user{
     background-color: @moderate-blue;
@@ -125,11 +135,14 @@ textarea{
     .comment-container{
         width: 100%;
         flex-direction: column-reverse;
+        gap: 10px;
+        padding: 15px;
     }
     .comment-evaluation{       
         flex-direction: row;
         width: 70px;
         padding: 0px 5px 0px;
+        margin: 0;
 
     }
 
@@ -160,5 +173,11 @@ textarea{
 @media screen and  (min-width: @phone-screen), (max-width: 500px){
     .comment-container{
         width: 80%;
+    }
+}
+@media screen and  (min-width: 500px){
+    .comment-container{
+        display: grid;
+        grid-template-columns: 1fr 14fr;
     }
 }
