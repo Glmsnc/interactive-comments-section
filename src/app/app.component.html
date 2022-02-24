@@ -1,2 +1,13 @@
-<h1>Teste</h1>
-<app-comments></app-comments>
+<div class="app-container">
+  <div class="content-container">
+    <comment-list
+      [comments]="comments"
+      [currentUser]="currentUser"
+    ></comment-list>
+
+
+    <app-reply 
+      [isNewMessage]="true"
+    > </app-reply>
+  </div>
+</div>
