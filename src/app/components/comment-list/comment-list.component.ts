@@ -16,7 +16,6 @@ export class CommentListComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    console.log('comment', this.comments)
   }
 
 }

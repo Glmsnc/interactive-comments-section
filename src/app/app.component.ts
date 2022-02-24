@@ -16,15 +16,20 @@ export class AppComponent implements OnInit{
   constructor(
     private readonly userService: UserService,
     private readonly commentService: CommentService){
-    this.loadData();
-    this.saveUser();
   }
 
   ngOnInit(): void {
+    
+    this.loadData();
+    this.saveUser();
     this.commentService.comment$.subscribe
     (comments => {
-      this.comments = comments;
-      console.log('teste', this.comments)
+      if(comments){
+        this.comments = comments;
+      }
+      else{
+        this.loadDefault();
+      }
     });
   }
   addReply($event){
@@ -49,9 +54,13 @@ export class AppComponent implements OnInit{
   }
 
 
+  loadDefault(){
+    const {comments} = data;
+    this.comments = comments as CommentData[];
+  }
+
   getLastId(): number{
     let lastId = 0;
-    console.log(this.commentService.comment)
     this.commentService.comment.map(comment =>{
       if(comment.id > lastId) lastId = comment.id;
       comment.replies.map(reply =>{ if(reply.id > lastId) lastId = reply.id});

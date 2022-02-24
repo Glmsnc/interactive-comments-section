@@ -16,13 +16,11 @@ export default class CommentService{
    
     removeComment(id: number){
         
-    console.log(id,'init', this.comment)
     const newList = this.comment.filter(item => item.id !== id)
     .map( comment => {
         comment.replies = comment.replies.filter(item => item.id !== id);
         return comment;
     });
-    console.log('finish', newList)
     this.comments.next(newList);
     }
  
@@ -34,7 +32,6 @@ export default class CommentService{
     }
 
     saveComments(comments: any){
-        console.log('salvando...', comments)
         if(comments){
             localStorage.setItem('comments', JSON.stringify(comments));
         }

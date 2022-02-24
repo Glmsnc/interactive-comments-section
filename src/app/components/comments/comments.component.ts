@@ -52,7 +52,6 @@ export class CommentsComponent implements OnInit {
 
   getLastId(): number{
     let lastId = 0;
-    console.log(this.commentService.comment)
     this.commentService.comment.map(comment =>{
       if(comment.id > lastId) lastId = comment.id;
       comment.replies.map(reply =>{ if(reply.id > lastId) lastId = reply.id});
@@ -64,14 +63,12 @@ export class CommentsComponent implements OnInit {
 
   getParentId(): number{
     let parentId: any;
-    console.log('commentado',this.commentService.comment)
 
     parentId = this.commentService.comment.find(item =>{
       let test = item.replies.filter(item => item.id == this.comment.id)
      
       return test.length;
       })?.id;
-      console.log(parentId);
     return parentId;
   }
 
