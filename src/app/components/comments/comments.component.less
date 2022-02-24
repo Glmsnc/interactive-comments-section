@@ -55,6 +55,7 @@
         display: flex;
         justify-content: space-between;
         margin-left: 10px;
+        flex-wrap: wrap;
         &-main{
             display: flex;
             img{
@@ -114,7 +115,7 @@
 }
 
 
-@media screen and (max-width: @phone-screen){
+@media screen and (max-width: 550px){
     .comment-container{
         width: 100%;
         flex-direction: column-reverse;
@@ -152,12 +153,12 @@
         
     }
 }
-@media screen and  (min-width: @phone-screen), (max-width: 500px){
+@media screen and  (min-width: @phone-screen), (max-width: 550px){
     .comment-container{
         width: 80%;
     }
 }
-@media screen and  (min-width: 500px){
+@media screen and  (min-width: 550px){
     .comment-container{
         display: grid;
         grid-template-columns: 1fr 14fr;
