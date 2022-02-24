@@ -1,29 +1,61 @@
-<p>comments works!</p>
 
-<div style="display: flex; justify-content: center;">
-  
 <div class="comment-container">
-    <div class="comment-evaluation">
-        <button>+</button>
-         <span>5</span> 
-        <button>-</button>
+    <div class="comment-painel">
+        <div class="comment-evaluation">
+            <button class="increase-btn" (click)="upVote()">
+                <button-plus></button-plus>
+            </button>
+            <span class="vote-counter">{{comment.score}}</span> 
+            <button  class="decrease-btn" (click)="downVote()">
+                <button-minus></button-minus>
+            </button>
+        </div>
+        <ng-container *ngTemplateOutlet="buttonGroup"></ng-container> 
     </div>
     <div class="comment-info">
         <div class="comment-info-header">
             <div class="comment-info-header-main">
-                <img src="../../../assets/images/avatars/image-amyrobson.png" alt="">
-                <span class="username">maxblang</span>
-                <span class="post-date"> 2 weeks ago</span> 
+                <img [src]="comment.user.image.png" alt="">
+                <span class="username">{{comment.user.username}} <span class="same-user" *ngIf="isCurrentUser">you</span></span>
+                <span class="post-date"> {{comment.createdAt}}</span> 
             </div>
-            <div>
-                <span style="color: blue;">Reply</span>
-            </div>
+            
+            
+            <ng-container *ngTemplateOutlet="buttonGroup"></ng-container> 
+          
         </div>
-        <div class="comment-info-message">
-            Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.
+        <div class="comment-info-content">
+            <span *ngIf="!editComment">
+                <span class="replyingTo" *ngIf="comment?.replyingTo">@{{comment.replyingTo}} </span>{{comment.content}}</span>
+            <textarea *ngIf="editComment" [(ngModel)]="comment.content"></textarea>
         </div>
     </div>
 </div>
 
-</div>
- 
+
+
+   
+<ng-template #buttonGroup>
+    <div *ngIf="!isCurrentUser" class="reply-comment">
+        <reply-button (click)="toggleReply()"></reply-button>
+    </div>
+    <div *ngIf="isCurrentUser" class="same-user-painel">
+        <span class="delete" (click)="toggleModal()"> <img src="../../../assets/images/icon-delete.svg">  Delete</span>
+        <span class="edit" (click)=" toggleEdit()"> <img src="../../../assets/images/icon-edit.svg"> Edit</span>
+    </div>
+</ng-template>
+<app-reply 
+    *ngIf="openReply"
+    [isNewMessage]="false"
+    [replyTo]="comment.user.username"
+    (sendMessage)="addReply($event)"
+    (close)="openReply = false"
+>
+</app-reply>
+
+<dialog-delete *ngIf="openModal"
+    (cancel)="toggleModal()"
+    (confirm)="delete()"
+>
+
+</dialog-delete>
