@@ -12,7 +12,8 @@ import { ReplyListComponent } from './components/reply-list/reply-list.component
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { DialogDeleteComponent } from './components/shared/dialog-delete/dialog-delete.component';
+import { DialogDeleteComponent } from './components/shared/dialog-delete/dialog-delete.component';;
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DialogDeleteComponent } from './components/shared/dialog-delete/dialog-
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
