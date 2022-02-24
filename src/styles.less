@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
+@import './styles/theme/variables.less';
 
 *{
     margin: 0;
@@ -10,4 +9,13 @@
 body{
     background-color: hsl(228, 33%, 97%);
     font-size: 16px;
+}
+
+
+.vote-button{
+    display: flex;
+    margin: 10px 0;
+    svg:hover path{
+        fill: @moderate-blue;
+    }
 }
