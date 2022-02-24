@@ -1,0 +1,7 @@
+<div class="reply-list-container">
+    <div class="reply-list" *ngFor="let comment of replies">
+        <comments 
+        [isReply]="true"
+        [comment]="comment"></comments>
+    </div>
+</div>
