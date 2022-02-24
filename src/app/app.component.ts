@@ -19,16 +19,14 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    
     this.loadData();
-    this.saveUser();
-    this.commentService.comment$.subscribe
-    (comments => {
+    
+    this.commentService.comment$.subscribe(comments =>{
       if(comments){
         this.comments = comments;
       }
       else{
-        this.loadDefault();
+        this.loadDefaultComments();
       }
     });
   }
@@ -48,13 +46,12 @@ export class AppComponent implements OnInit{
   loadData(){
     const {comments, currentUser} = data;
     this.currentUser = currentUser;
-    this.saveUser();
+    this.saveUser(currentUser);
     this.saveComments(comments);
 
   }
 
-
-  loadDefault(){
+  loadDefaultComments(){
     const {comments} = data;
     this.comments = comments as CommentData[];
   }
@@ -69,8 +66,9 @@ export class AppComponent implements OnInit{
     return lastId+1;
   }
 
-  saveUser(){
-    this.userService.saveUser(this.currentUser);
+  saveUser(user){
+    console.log('userMain', user)
+    this.userService.saveUser(user);
   }
   saveComments(comments: any){
     this.commentService.saveComments(comments);

@@ -21,7 +21,13 @@ export class CommentsComponent implements OnInit {
   isCurrentUser = false;
 
   ngOnInit(): void {
-    this.isCurrentUser = (this.userService.user.username === this.comment.user.username);
+    this.userService.user$.subscribe(user=>
+      {
+        console.log('user', user)
+        this.isCurrentUser = (user?.username === this.comment.user.username); 
+      }
+      
+    )
   }
 
 

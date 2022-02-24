@@ -7,7 +7,7 @@
 
 <ng-template #desktop>
     <div class="reply-desktop reply-container">
-        <img [src]="userService.user.image.png" alt="">
+        <img [src]="user?.image.png" alt="">
         <textarea class="text-box"
         [(ngModel)]="textContent"
         (ngModelChange)="changeText()">
@@ -34,7 +34,7 @@
         (ngModelChange)="changeText()">
         </textarea>
         <div class="reply-mobile-content">
-            <img [src]="userService.user.image.png" alt="">
+            <img [src]="user?.image.png" alt="">
             <button class="btn-send" (click)="send()">
             <span *ngIf="isNewMessage">
                 SEND

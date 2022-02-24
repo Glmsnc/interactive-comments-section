@@ -13,10 +13,12 @@ export class ReplyComponent implements OnInit {
   @Input() isNewMessage = false;
   @Output() close = new EventEmitter();
   @Output() sendMessage = new EventEmitter();
+  user: any;
   constructor(readonly userService: UserService) { }
 
   ngOnInit(): void {
     if(this.replyTo) this.textContent = `@${this.replyTo},`;
+    this.loadUserInfo();
   }
 
   send(){
@@ -40,6 +42,10 @@ export class ReplyComponent implements OnInit {
 
   }
 
+
+  loadUserInfo(){
+    this.userService.user$.subscribe(user => this.user = user);
+  }
   changeText(){
     if(!this.textContent.includes('@')) this.close.emit();
   }
