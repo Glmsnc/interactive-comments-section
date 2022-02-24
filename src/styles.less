@@ -41,3 +41,21 @@ body{
         opacity: 0.3;
     }
 }
+
+.text-box{
+    height: 100px;
+    border-radius: 10px;
+    resize: none;
+    width: 100%;
+    border: 2px solid @light-gray;
+    min-width: 180px;
+    color: hsl(211, 10%, 45%);
+    font-weight: 400;
+    line-height: 1.5;
+    &:hover{
+        border-color: @light-grayish-blue;
+    }
+    &::placeholder{
+        color: @dark-blue;
+    }
+}

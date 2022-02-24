@@ -8,7 +8,7 @@
 <ng-template #desktop>
     <div class="reply-desktop reply-container">
         <img [src]="userService.user.image.png" alt="">
-        <textarea
+        <textarea class="text-box"
         [(ngModel)]="textContent"
         (ngModelChange)="changeText()">
         </textarea>
@@ -29,7 +29,7 @@
 <ng-template #mobile>
     <div class="reply-mobile reply-container">
 
-        <textarea
+        <textarea class="text-box"
         [(ngModel)]="textContent"
         (ngModelChange)="changeText()">
         </textarea>

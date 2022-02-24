@@ -30,7 +30,7 @@
                 {{comment.content}}
             </p>
             <div class="edit-area">
-            <textarea *ngIf="editComment" [(ngModel)]="comment.content"></textarea>
+            <textarea class="text-box" *ngIf="editComment" [(ngModel)]="comment.content"></textarea>
             <button *ngIf="editComment" (click)="toggleEdit()" class="primary-button" >UPDATE</button>
             </div>
         </div>
