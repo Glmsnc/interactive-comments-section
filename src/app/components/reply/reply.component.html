@@ -1,1 +1,49 @@
-<p>reply works!</p>
+
+<div class="reply-main-container">
+<ng-container class="reply-desktop" *ngTemplateOutlet="desktop"></ng-container> 
+<ng-container  *ngTemplateOutlet="mobile"></ng-container> 
+</div>
+
+
+<ng-template #desktop>
+    <div class="reply-desktop reply-container">
+        <img [src]="userService.user.image.png" alt="">
+        <textarea
+        [(ngModel)]="textContent"
+        (ngModelChange)="changeText()">
+        </textarea>
+        <div>
+            <button class="btn-send" (click)="send()">
+            <span *ngIf="isNewMessage">
+                SEND
+            </span>
+            <span *ngIf="!isNewMessage">
+                REPLY
+            </span>
+            
+            </button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #mobile>
+    <div class="reply-mobile reply-container">
+
+        <textarea
+        [(ngModel)]="textContent"
+        (ngModelChange)="changeText()">
+        </textarea>
+        <div class="reply-mobile-content">
+            <img [src]="userService.user.image.png" alt="">
+            <button class="btn-send" (click)="send()">
+            <span *ngIf="isNewMessage">
+                SEND
+            </span>
+            <span *ngIf="!isNewMessage">
+                REPLY
+            </span>
+            
+            </button>
+        </div>
+    </div>
+</ng-template>
